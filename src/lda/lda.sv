@@ -2,7 +2,7 @@ module lda #(
     localparam bit UseFFs = 1'b1,
     localparam int DIMS = 6,
     localparam int CLASSES = 3,
-    localparam type T = logic [7:0]
+    localparam type T = logic [15:0]
 )
 (
     input clk_i, rstn_i,
