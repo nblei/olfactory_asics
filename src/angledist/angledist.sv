@@ -36,7 +36,9 @@ always_comb begin
 end
 
 T mag_prod;
-DW_sqrt #(32, 0) u_sqrt1(.a(msqsum*vsqsum), .root(mag_prod));
+logic [31:0] prod;
+assign prod = {16'h0, msqsum} * {16'h0, vsqsum};
+DW_sqrt #(32, 0) u_sqrt1(.a(prod), .root(mag_prod));
 // DW_sqrt #(16, 0) u_sqrt2(.a(vsqsum), .root(mag_v));
 T arcos_val, arcos_val_sqd;
 assign arcos_val = sum / mag_prod;
