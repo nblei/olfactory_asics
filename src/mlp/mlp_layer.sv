@@ -12,7 +12,7 @@ module dense_layer
 
 );
 
-localparam int NBits = $size(din[0]);
+localparam int NBits = $bits(din[0]);
 
 T products [D1] [D2];
 for (genvar i = 0; i < D2; ++i) begin : gen_products_i
@@ -32,7 +32,7 @@ end
 
 T bias_added [D2];
 for (genvar i = 0; i < D2; ++i) begin : gen_biases
-    assign bias_added[i] = reduced[i] + biases[i];
+    assign bias_added[i] = prod_sums[i] + biases[i];
 end
 
 for (genvar i = 0; i < D2; ++i) begin : gen_relu

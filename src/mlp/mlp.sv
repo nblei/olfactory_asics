@@ -1,5 +1,6 @@
 module mlp
 (
+    input clk_i, rstn_i,
     input logic [7:0] din [6],
     input logic [7:0] w1  [6]  [16],
     input logic [7:0] b1       [16],
