@@ -30,9 +30,15 @@ C _dout, DOUT;
 logic [$clog2(NPoints)-1:0] votes [Classes];
 
 // Count votes after sorting distances
+// C used_classes [K];
+// for (genvar i = 0; i < K; ++i) begin : gen_indices
+//     I index;
+//     assign index = sorted_distances[i];
+//     assign used_classes[i] = CLASSES[index];
+// end
 always_comb begin
     for (int i = 0; i < Classes; ++i) votes[i] = 0;
-    for (int i = 0; i < K; ++K) votes[CLASSES[sorted_distances[i]]] += 1;
+    for (int i = 0; i < K; ++i) votes[CLASSES[sorted_distances[i]]] += 1;
 end
 assign _dout = votes[1] > votes[0];
 
