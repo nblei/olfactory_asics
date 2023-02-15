@@ -20,7 +20,7 @@ always_comb begin
         votes[j] = 0;
         temp[j] = 0;
         for (int i = 0; i < DIMS; ++i) begin
-            temp[j] += din[i] * w01[j][i];
+            temp[j] += din[i] * w[j][i];
         end
     end
     if (temp[0] > c[0])

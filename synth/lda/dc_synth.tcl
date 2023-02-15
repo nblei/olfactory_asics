@@ -97,7 +97,7 @@ analyze -format sverilog [glob $design_verilog_files]
 
 #elaborate $design_toplevel -parameter [getenv PARAMETERS]
 elaborate $design_toplevel
-puts [getenv TOP_LEVEL]
+#puts [getenv TOP_LEVEL]
 
 current_design $design_toplevel
 link
