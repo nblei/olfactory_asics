@@ -5,6 +5,7 @@ module angledist
     localparam bit UseFFs = 1'b1
 )
 (
+    input clk_i, rstn_i,
     input T din [2] [DIM],
     input T a, b, c,
     output T dout
@@ -22,7 +23,7 @@ always_ff @(posedge clk_i) begin
     DOUT <= _dout;
 end
 
-T sum, msqsum, vsqum;
+T sum, msqsum, vsqsum;
 always_comb begin
     sum = 0;
     msqsum = 0;
