@@ -32,7 +32,7 @@ logic [$clog2(NPoints)-1:0] votes [Classes];
 // Count votes after sorting distances
 always_comb begin
     for (int i = 0; i < Classes; ++i) votes[i] = 0;
-    for (int i = 0; i < K; ++K) votes[CLASSES[sorted_distances[k]]] += 1;
+    for (int i = 0; i < K; ++K) votes[CLASSES[sorted_distances[i]]] += 1;
 end
 assign _dout = votes[1] > votes[0];
 
