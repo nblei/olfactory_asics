@@ -31,8 +31,8 @@ C _dout, DOUT;
 always_comb begin
     // Compute squared distances
     for (int i = 0; i < NPoints; ++i) begin
-        distances[i] = (points[i].x - din.x)*(points[i].x - din.x) +
-                       (points[i].y - din.y)*(points[i].y - din.y);
+        distances[i] = (POINTS[i].x - din.x)*(POINTS[i].x - din.x) +
+                       (POINTS[i].y - din.y)*(POINTS[i].y - din.y);
     end
     // Determine
 end
