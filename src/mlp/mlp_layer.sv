@@ -1,6 +1,6 @@
 module dense_layer
 #(
-    localparam int NBits = 8,
+    parameter int NBits = 16,
     parameter type T = logic [NBits-1:0],
     parameter unsigned D1,
     parameter unsigned D2
