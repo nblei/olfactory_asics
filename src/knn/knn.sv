@@ -2,6 +2,7 @@ module knn
 #(
     localparam type T = logic [31:0],
     localparam int NPoints = 17,
+    localparam type I = logic [$clog2(NPoints)-1:0],
     localparam int Classes = 2,
     localparam type C = logic [$clog2(Classes)-1:0],
     localparam int K = 3,
@@ -23,10 +24,17 @@ typedef struct packed  {
 point_t POINTS [NPoints];
 point_t DIN;
 T distances [NPoints];
-T sorted_distances [NPoints];
+I sorted_distances [NPoints]; // Just the indices, really
 C CLASSES [NPoints];
 C _dout, DOUT;
+logic [$clog2(NPoints)-1:0] votes [Classes];
 
+// Count votes after sorting distances
+always_comb begin
+    for (int i = 0; i < Classes; ++i) votes[i] = 0;
+    for (int i = 0; i < K; ++k) votes[CLASSES[sorted_distances[k]]] += 1;
+end
+assign _dout = votes[1] > votes[0];
 
 always_comb begin
     // Compute squared distances
