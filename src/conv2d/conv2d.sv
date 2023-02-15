@@ -109,7 +109,7 @@ always_comb begin : output_ctl
         end
         WLoad: begin
             addr_is_weight_o = 1'b1;
-            addr_o = s.wload_counter;
+            raddr_o = s.wload_counter;
         end
         FLoad: begin
             wen_o = 1'b1;
