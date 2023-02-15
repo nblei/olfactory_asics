@@ -19,7 +19,7 @@ logic [7:0] B1     [16];
 logic [7:0] W2 [16] [3];
 logic [7:0] B2      [3];
 logic [7:0] DIN     [6];
-logic [7:0] DOUT, _dout    [3];
+logic [7:0] DOUT [3], _dout    [3];
 
 generate
 if (UseFFs != 0) begin : gen_use_ffs
