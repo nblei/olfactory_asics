@@ -5,7 +5,7 @@ module knn
     localparam int Classes = 2,
     localparam type C = logic [$clog2(Classes)-1:0],
     localparam int K = 3,
-    localparam bit UseFFs
+    localparam bit UseFFs = 1'b1
 )
 (
     input clk_i, rstn_i,
