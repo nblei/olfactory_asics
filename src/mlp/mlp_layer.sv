@@ -1,6 +1,7 @@
 module dense_layer
 #(
-    parameter type T = logic [7:0],
+    localparam int NBits = 8,
+    parameter type T = logic [NBits-1:0],
     parameter unsigned D1,
     parameter unsigned D2
 )
@@ -12,10 +13,9 @@ module dense_layer
 
 );
 
-localparam int NBits = $bits(din[0]);
 
 T products [D1] [D2];
-for (genvar i = 0; i < D2; ++i) begin : gen_products_i
+for (genvar i = 0; i < D1; ++i) begin : gen_products_i
     for (genvar j = 0; j < D2; ++j) begin : gen_products_j
         assign products[i][j] = din[i] * weights[i] [j];
     end
