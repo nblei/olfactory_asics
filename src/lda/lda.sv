@@ -33,7 +33,7 @@ end
 T temp [CLASSES];
 always_comb begin
     int votes [CLASSES];
-    dout = '0;
+    _dout = '0;
     for (int j = 0; j < CLASSES; ++j) begin
         votes[j] = 0;
         temp[j] = 0;
