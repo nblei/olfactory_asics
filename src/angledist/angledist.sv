@@ -2,7 +2,7 @@ module angledist
 #(
     localparam type T = logic [15:0],
     localparam int DIM = 6,
-    localparam bit UseFFs
+    localparam bit UseFFs = 1'b1
 )
 (
     input T din [2] [DIM],
