@@ -10,10 +10,10 @@ module conv2d
     input  start_i,
     input  T membus_i [R],
     output T raddr_o,
-    output   addr_is_weight_o,
+    output logic  addr_is_weight_o,
     output T membus_o,
     output T waddr_o,
-    output   wen_o
+    output logic  wen_o
 );
 
 typedef enum {
