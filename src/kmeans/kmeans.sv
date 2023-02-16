@@ -95,7 +95,8 @@ always_ff @(posedge clk_i) begin
                     state.phase <= UpdateClusters;
                 end
                 for (int dim = 0; dim < DIMS; ++dim) begin
-                    centroids_next[cluster_number][dim] += membus_i[dim];
+                    centroids_next[cluster_number][dim] <=
+                        centroids_next[cluster_number][dim] + membus_i[dim];
                 end
             end
             UpdateClusters: begin
