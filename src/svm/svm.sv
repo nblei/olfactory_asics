@@ -43,7 +43,7 @@ mlp_layer #(.D1(DIMS), .D2(INTER)) u_matmul1
     .dout(matprodi)
 );
 
-mlp_layer #(.D1(DIMS), .D2(INTER)) u_matmul2
+mlp_layer #(.D1(INTER), .D2(CLASSES)) u_matmul2
 (
     .din(matprodi),
     .weights(FEATS2),
