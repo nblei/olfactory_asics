@@ -45,17 +45,17 @@ for (genvar k = 0; k < K; ++k) begin : gen_distances_k
         assign centroid_dim_distances_sqd [dim] = dim_dif * dim_dif;
     end
     always_comb begin
-        centroid_distance[k] = '0;
+        centroid_distances [k] = '0;
         for (int dim = 0; dim < DIMS; ++dim) begin
-            centroid_distance[k] += centroid_dim_distances_sqd[dim];
+            centroid_distances[k] += centroid_dim_distances_sqd[dim];
         end
     end
 end
 
 // BREAKS if K != 3
-assign cluster_number = centroid_distance[0] < centroid_distance[1] ?
-                        (centroid_distance[0] < centroid_distance[2] ? 0 : 2) :
-                        (centroid_distance[1] < centroid_distance[2] ? 1 : 2);
+assign cluster_number = centroid_distances[0] < centroid_distances[1] ?
+                        (centroid_distances[0] < centroid_distances[2] ? 0 : 2) :
+                        (centroid_distances[1] < centroid_distances[2] ? 1 : 2);
 
 assign addr_o = state.sample_counter;
 assign class_o = cluster_number;
