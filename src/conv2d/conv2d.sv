@@ -1,6 +1,6 @@
 module conv2d
 #(
-    localparam type T = logic [15:0],
+    localparam type T = logic [31:0],
     localparam int R = 3,
     localparam int H = 32,
     localparam int Q = H - (R/2)*2
@@ -32,8 +32,8 @@ typedef struct packed {
 state_t s;
 
 T weight_buf [R] [R];
-T feat_buf [R] [R];
-T outval;
+T feat_buf   [R] [R];
+T outval, OUTVAL;
 
 always_ff @(posedge clk_i or negedge rstn_i) begin
     if (!rstn_i) begin
@@ -42,6 +42,7 @@ always_ff @(posedge clk_i or negedge rstn_i) begin
         s.row_counter <= 0;
         s.col_counter <= 0;
     end else begin
+        outval <= OUTVAL;
         case (s.phase)
             Idle: begin
                 s.wload_counter <= 0;
@@ -122,10 +123,10 @@ always_comb begin : output_ctl
 end
 
 always_comb begin : output_compute
-    outval = '0;
+    OUTVAL = '0;
     for (int i = 0; i < R; ++i) begin
         for (int j = 0; j < R; ++j) begin
-            outval += weight_buf[i][j] * feat_buf[i][j];
+            OUTVAL += weight_buf[i][j] * feat_buf[i][j];
         end
     end
 end
