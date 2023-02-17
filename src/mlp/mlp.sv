@@ -22,6 +22,7 @@ T W2 [16] [3];
 T B2      [3];
 T DIN     [6];
 T DOUT [3], _dout    [3];
+T l1_out_q [16];
 
 generate
 if (UseFFs != 0) begin : gen_use_ffs
@@ -32,6 +33,7 @@ if (UseFFs != 0) begin : gen_use_ffs
         B1 <= b1;
         B2 <= b2;
         DOUT <= _dout;
+        l1_out_q <= d1;
     end
 end else begin : gen_no_ffs
     assign DIN = din;
@@ -40,6 +42,7 @@ end else begin : gen_no_ffs
     assign B1 = b1;
     assign B2 = b2;
     assign DOUT = _dout;
+    assign l1_out_q = d1;
 end
 endgenerate
 
@@ -53,7 +56,7 @@ dense_layer #(.NBits(NBits), .T(T), .D1(6), .D2(16)) layer_1
 
 dense_layer #(.NBits(NBits), .T(T), .D1(16), .D2(3)) layer_2
 (
-    .din(d1),
+    .din(l1_out_q),
     .weights(W2),
     .biases(B2),
     .dout(_dout)
