@@ -2,7 +2,7 @@ module conv2d
 #(
     localparam type T = logic [31:0],
     localparam int R = 3,
-    localparam int H = 32,
+    localparam int H = 34,
     localparam int Q = H - (R/2)*2
 )
 (
